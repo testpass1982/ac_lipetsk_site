@@ -35,8 +35,8 @@ urlpatterns = [
     path('service/<slug:pk>', mainapp.services, name="service"),
     path('reestrsp/', mainapp.reestrsp, name='reestrsp'),
     path('import_profile/', mainapp.import_profile, name='import_proflie'),
-
-
+    path('articles/', mainapp.articles, name='articles'),
+    path('news/', mainapp.news, name='news'),
 ]
 
 if settings.DEBUG:

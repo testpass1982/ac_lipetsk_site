@@ -243,6 +243,11 @@ def contact(request):
 
     return render(request, 'mainapp/contact.html', context)
 
+def articles(request):
+    content = {
+        'title': 'Статьи'
+    }
+    return render(request, 'mainapp/articles.html', content)
 
 def messages(request):
     '''view to all messages in one page - will be @login_required'''
