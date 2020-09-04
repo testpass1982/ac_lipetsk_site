@@ -91,9 +91,6 @@
             </div>
             <div class="col-7 text-right">
                 <p class="text-dark mb-2"><a href="tel:{{ profile.org_main_phone }}"><strong>{{ profile.org_main_phone }}</strong></a></p>
-                {% if profile.secondary_phone %}
-                <p class="text-dark mb-2"><a href="tel:{{ profile.org_secondary_phone }}"><strong>{{ proflie.org_secondary_phone }}</strong></a></p>
-                {% endif %}
                 <p class="font-text-thin text-size-12 mb-0"><a href="mailto:{{ profile.org_email }}">{{ profile.org_email }}</a></p>
                 <p class="text-darg font-text-demi footer-text-small mb-4">{{ profile.org_address }}</p>
                 <button class="btn btn-outline-white btn-sm" data-toggle="modal" data-target="#modal-statement">Оставить
@@ -173,7 +170,7 @@
             </div>
             <div class="col-sm-5 col-xl text-right">
                 <p class="font-text-demi text-white text-size-20 mb-1">{{ profile.org_main_phone }}</p>
-                <p class="font-text-demi text-white text-size-20 mb-3">{{ profile.org_secondary_phone}}</p>
+                {% comment %} <p class="font-text-demi text-white text-size-20 mb-3">{{ profile.org_secondary_phone}}</p> {% endcomment %}
                 <p class="mail-footer font-text-thin mb-0 mb-md-1">{{ profile.org_email}}</p>
 
                 <p class="font-text-thin footer-text-small mb-2">{{ profile.org_address }}</p>

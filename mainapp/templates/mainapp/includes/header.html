@@ -58,13 +58,17 @@
                 </div>
                 <div class="col-sm-7 col-xl-4">
                     <div class="row">
-                        <div class="col-6">
-                            <p class="font-text-demi mb-0">{{ profile.org_main_phone }}</p>
-                            <p class="font-text-demi mb-0">{{ profile.org_secondary_phone }}</p>
+
+                        <div class="col">
+                            <div>
+                                <p class="font-text-demi mb-0 text-center">{{ profile.org_main_phone }}</p>
+                                {% comment %} <p class="font-text-demi mb-0">{{ profile.org_secondary_phone }}</p> {% endcomment %}
+                            </div>
+                            <div class="text-center">
+                                <p class="font-text-thin text-secondary mb-0">{{ profile.org_email }}</p>
+                            </div>
                         </div>
-                        <div class="col-6 text-right">
-                            <p class="font-text-thin text-secondary mb-0">{{ profile.org_email }}</p>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-xl-4">

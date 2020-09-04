@@ -33,10 +33,12 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('messages/', mainapp.messages, name='messages'),
     path('service/<slug:pk>', mainapp.services, name="service"),
+    path('accept_order/', mainapp.accept_order, name="accept_order"),
     path('reestrsp/', mainapp.reestrsp, name='reestrsp'),
     path('import_profile/', mainapp.import_profile, name='import_proflie'),
     path('articles/', mainapp.articles, name='articles'),
     path('news/', mainapp.news, name='news'),
+    path('captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

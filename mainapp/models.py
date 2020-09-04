@@ -357,6 +357,7 @@ class Profile(models.Model):
     org_secondary_phone_text = models.CharField(u'Подпись под вторым телефоном в хедере, например "Бухгалтерия"', max_length=30, blank=True, null=True, default=None)
     org_phones = models.TextField(u'Телефоны', blank=True, null=True, default=None)
     org_email = models.TextField(u'Адрес электронной почты', blank=True, null=True, default=None)
+    org_order_email = models.CharField(u'Адреса для подключения формы заявки', max_length=100, blank=True, null=True, default=None)
     org_header_emails = models.TextField(u'Адреса электронной почты (для хедера)', blank=True, null=True, default=None)
     org_header_phones = models.TextField(u'Телефоны (для хедера)', blank=True, null=True, default=None)
     org_address = models.TextField(u'Адрес местоположения организации', null=True, blank=True, default=None)
@@ -513,3 +514,19 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class OrderService(models.Model):
+    name = models.CharField(u'Имя контакта', max_length=50)
+    pseudo = models.CharField(u'Псевдоним', max_length=30, default='pseudo')
+    phone = models.CharField(u'Телефон контакта', max_length=50)
+    email = models.EmailField(u'Адрес эл почты')
+    compound = models.CharField(u'Состав заявки', max_length=1000, default=None, blank=True, null=True)
+    ready = models.BooleanField(u'Вопрос решен', default=False, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
+
+    def __str__(self):
+        return self.name

@@ -1,6 +1,6 @@
 from .models import Document
 from .models import Profile, Service, Post, SiteConfiguration, Component
-from .forms import ProfileImportForm
+from .forms import ProfileImportForm, OrderForm
 import random
 from django.template import Context, Template
 from django.shortcuts import render, get_object_or_404
@@ -61,3 +61,7 @@ def documents(request):
 from .models import Attestat
 def attestats(request):
     return {'attestats': Attestat.objects.all().order_by('number')}
+
+def order_form(request):
+    order_form = OrderForm()
+    return {'order_form': order_form}

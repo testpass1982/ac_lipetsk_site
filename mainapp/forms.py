@@ -2,7 +2,9 @@ from django import forms
 from django.core.validators import FileExtensionValidator, validate_email
 import os
 
-from .models import Post, Article, Document, Menu, Profile
+from .models import Post, Article, Document, Menu, Profile, OrderService
+from captcha.fields import CaptchaField
+
 
 
 class ContentForm(forms.ModelForm):
@@ -115,3 +117,25 @@ class ProfileImportForm(forms.Form):
     #             raise forms.ValidationError('File types is not allowed')
     #     except Exception as e:
     #         raise forms.ValidationError('Can not identify file type')
+
+class OrderForm(forms.ModelForm):
+    captcha = CaptchaField()
+    class Meta:
+        model = OrderService
+        fields = ['name', 'phone', 'email', 'compound']
+        widgets = {
+                'name': forms.TextInput({
+                'placeholder': "Ваше имя",
+                'class': 'form-control form-control-sm',
+                }),
+                'phone': forms.TextInput({
+                    'placeholder': 'Ваш телефон',
+                    'class': 'form-control form-control-sm',
+                    'type': 'text',
+                }),
+                'email': forms.TextInput({
+                    'placeholder': 'Ваш адрес эл. почты',
+                    'class': 'form-control form-control-sm',
+                    'type': 'text',
+                }),
+            }

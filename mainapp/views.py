@@ -10,10 +10,15 @@ from .models import Registry
 from .models import Staff
 from .forms import PostForm, ArticleForm, DocumentForm, ProfileImportForm, Profile
 from .forms import SendMessageForm, SubscribeForm, AskQuestionForm, DocumentSearchForm, SearchRegistryForm
+from .forms import OrderForm
 from .adapters import MessageModelAdapter
 from .message_tracker import MessageTracker
 from .utilites import UrlMaker, update_from_dict
 from .registry_import import Importer, data_url
+from django.core.mail import send_mail
+from django.conf import settings
+
+
 # Create your views here.
 
 
@@ -420,3 +425,66 @@ def import_profile(request):
         else:
             content.update({'errors': 'Файл для загрузки не выбран'})
         return render(request, 'mainapp/includes/profile_load.html', content)
+
+
+def accept_order(request):
+    if request.method == 'POST':
+        data = {
+            "name": request.POST.get('name'),
+            "phone": request.POST.get('phone'),
+            "email": request.POST.get('email'),
+            "captcha_1": request.POST.get('captcha_1'),
+            "captcha_0": request.POST.get('captcha_0'),
+            "compound": request.POST.get('order_type'),
+            }
+
+        # all_services = Service.objects.all().exclude(pseudo="pseudo")
+        # order_variants = [srvc.pseudo for srvc in all_services]
+        # if any([request.POST.get(order_item) for order_item in order_variants]):
+            # order_compound = {
+                # "Аттестация технологий": 'attst' in request.POST,
+            # }
+            # for srvc in all_services:
+                # order_compound.update({
+                    # srvc.title: srvc.pseudo in request.POST
+                # })
+            # data.update({"compound": "{}".format(order_compound)})
+        # else:
+            # order_compound = {'Ничего не заявлено': True}
+
+        form = OrderForm(data)
+        if form.is_valid():
+            instance = form.save()
+            current_absolute_url = request.build_absolute_uri()
+            email_address_arr = ['popov.anatoly@gmail.com']
+            # order_arr = []
+
+            # for key in order_compound.keys():
+            #     if order_compound[key] is True:
+            #         order_arr.append(key)
+
+            if '8000' not in current_absolute_url:
+                if Profile.objects.first() is not None:
+                    admin_email_address = Profile.objects.first().org_order_email.split(" ")
+                else:
+                    admin_email_address = 'soft@naks.ru'
+                email_address_arr += admin_email_address
+            # 4seconds economy to send_email every time i make tests
+            if not instance.name == 'tolik_make_tests':
+                send_mail(
+                    'Заполнена заявка на сайте',
+    """
+    Заполнена заявка на сайте {url}
+    Имя: {name}, Телефон: {phone}, Email: {email}
+    Заявлено: {order_string}
+    """.format(url=current_absolute_url,
+               name=instance.name,
+               phone=instance.phone,
+               email=instance.email,
+               order_string=instance.compound),
+                    settings.EMAIL_HOST_USER,
+                    email_address_arr
+                )
+            return JsonResponse({'message': 'ok', 'order_id': instance.pk})
+        else:
+            return JsonResponse({'errors': form.errors})
