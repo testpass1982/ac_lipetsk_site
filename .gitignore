@@ -82,6 +82,7 @@ target/
 *.pot
 *.pyc
 __pycache__/
+static_root/
 local_settings.py
 **/migrations/**
 
