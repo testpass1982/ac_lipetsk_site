@@ -75,6 +75,7 @@ TEMPLATES = [
                 'mainapp.context_processors.documents',
                 'mainapp.context_processors.attestats',
                 'mainapp.context_processors.order_form',
+                'mainapp.context_processors.subscribe_form',
             ],
         },
     },

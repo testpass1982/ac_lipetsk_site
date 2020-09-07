@@ -149,22 +149,28 @@
                 <p class="mb-2"><a href="{% url 'contact' %}#page-top" class="link-footer">Контакты</a></p>
             </div>
             <div class="col-xl-4 d-none d-xl-block">
-                <form>
-                    <p class="font-text-thin text-size-14 mb-2">Подписка на центр</p>
-                    <div class="form-row align-items-center">
-                        <div class="col-auto">
-                            <label class="sr-only" for="inlineFormInput">Подписка</label>
-                            <input type="text" class="form-control form-control-sm mb-2" id="inlineFormInput"
-                                placeholder="Введите e-mail">
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-secondary btn-sm mb-2">Отправить</button>
-                        </div>
-                    </div>
+                <form id="subscribtion_form">
+                    <p class="font-text-thin text-size-14 mb-2">Подписка на обновления</p>
+                    <p class="text-size-12 mb-2">Для подписки на обновления, введите свои данные в форму:</p>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                         <input type="checkbox" class="custom-control-input" id="customControlInline">
                         <label class="custom-control-label text-size-12" for="customControlInline">Я даю <a href="#"
                                 target="_blank">согласие на обработку персональных данных</a></label>
+                    </div>
+                    <div class="mb-2">
+                        {{ subscribe_form.captcha }}
+                    </div>
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">Подписка</label>
+                            {% comment %} <input type="text" class="form-control form-control-sm mb-2" id="inlineFormInput"
+                                placeholder="Введите e-mail"> {% endcomment %}
+                            {{ subscribe_form.email }}
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" id="subscribe_button" class="btn btn-secondary btn-sm mb-2">Отправить</button>
+                        </div>
+                        <div id="subscribe_response_message"></div>
                     </div>
                 </form>
             </div>

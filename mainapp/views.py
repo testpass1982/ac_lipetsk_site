@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import Http404, JsonResponse, HttpResponseRedirect
+from django.http import Http404, JsonResponse, HttpResponseRedirect, HttpResponse
 from django.core.exceptions import ValidationError
 # from django.contrib import messages
 from django.utils import timezone
@@ -488,3 +488,15 @@ def accept_order(request):
             return JsonResponse({'message': 'ok', 'order_id': instance.pk})
         else:
             return JsonResponse({'errors': form.errors})
+
+
+def accept_subscription(request):
+    print('SUBSCRIBE REQUEST', request)
+    if request.method == 'POST':
+        form = SubscribeForm(request.POST)
+        if form.is_valid():
+            subscription = form.save(commit=False)
+            subscription.save()
+            return HttpResponse('<p class="text-warning">Подписка оформлена</p>')
+        else:
+            return HttpResponse('<p class="text-danger">Исправьте ошибки:</p>{}'.format(form.errors))

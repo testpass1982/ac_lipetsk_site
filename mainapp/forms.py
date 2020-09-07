@@ -2,7 +2,7 @@ from django import forms
 from django.core.validators import FileExtensionValidator, validate_email
 import os
 
-from .models import Post, Article, Document, Menu, Profile, OrderService
+from .models import Post, Article, Document, Menu, Profile, OrderService, Subscription
 from captcha.fields import CaptchaField
 
 
@@ -64,11 +64,18 @@ class SendMessageForm(forms.Form):
             attrs={'class': 'checkmark'}))
 
 
-class SubscribeForm(forms.Form):
+class SubscribeForm(forms.ModelForm):
     email = forms.EmailField(
         required=True, widget=forms.EmailInput(
-            attrs={'class': 'main-footer__subscribe-email--input',
+            attrs={'class': 'form-control form-control-sm mb-2',
                    'placeholder': 'Введите e-mail'}))
+    captcha = CaptchaField()
+
+    class Meta:
+        model = Subscription
+        fields = ['email',]
+
+
 
 
 class AskQuestionForm(forms.Form):

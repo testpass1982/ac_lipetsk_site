@@ -530,3 +530,13 @@ class OrderService(models.Model):
 
     def __str__(self):
         return self.name
+
+class Subscription(models.Model):
+    email = models.EmailField(u'Адрес эл почты подписчика')
+
+    class Meta:
+        verbose_name = 'Подписка на обновления'
+        verbose_name_plural = 'Подписки на обновления'
+
+    def __str__(self):
+        return self.email

@@ -1,6 +1,6 @@
 from .models import Document
 from .models import Profile, Service, Post, SiteConfiguration, Component
-from .forms import ProfileImportForm, OrderForm
+from .forms import ProfileImportForm, OrderForm, SubscribeForm
 import random
 from django.template import Context, Template
 from django.shortcuts import render, get_object_or_404
@@ -65,3 +65,7 @@ def attestats(request):
 def order_form(request):
     order_form = OrderForm()
     return {'order_form': order_form}
+
+def subscribe_form(request):
+    subscr_form = SubscribeForm()
+    return {'subscribe_form': subscr_form}

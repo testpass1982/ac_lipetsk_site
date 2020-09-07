@@ -155,11 +155,21 @@ $(document).ready(function() {
 			}
 		  );
 	  });
-	  $('#refresh_captcha').click(function () {
+	  $('#refresh_captcha').click(function() {
 		$.getJSON("/captcha/refresh/", function (result) {
 			$('.captcha').attr('src', result['image_url']);
 			$('#id_captcha_0').val(result['key'])
 		});
+	});
+	$('#subscribe_button').click(function(event){
+		event.preventDefault();
+		let subcribe_data= $('#subscribtion_form').serializeArray();
+		console.log('SUBSCRIBE DATA', subcribe_data);
+		$.post('/accept_subscription/', subcribe_data)
+			.done(response => {
+				$('#subscribe_response_message').html(response);
+			})
+			.fail(response => console.log('FAIL:', response))
 	});
 });
 

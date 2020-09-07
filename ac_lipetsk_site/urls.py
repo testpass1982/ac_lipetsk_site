@@ -34,6 +34,7 @@ urlpatterns = [
     path('messages/', mainapp.messages, name='messages'),
     path('service/<slug:pk>', mainapp.services, name="service"),
     path('accept_order/', mainapp.accept_order, name="accept_order"),
+    path('accept_subscription/', mainapp.accept_subscription, name='accept_subscription'),
     path('reestrsp/', mainapp.reestrsp, name='reestrsp'),
     path('import_profile/', mainapp.import_profile, name='import_proflie'),
     path('articles/', mainapp.articles, name='articles'),
