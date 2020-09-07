@@ -17,9 +17,9 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="mb-4" id="page-top">Документы</h4>
+                {% comment %} <h4 class="mb-4" id="page-top">Документы</h4> {% endcomment %}
 
-                <form class="search-docs border-top border-bottom py-4 py-sm-5 mb-4" method="get" action="#page-top">
+                {% comment %} <form class="search-docs border-top border-bottom py-4 py-sm-5 mb-4" method="get" action="#page-top">
                     <div class="form-row mb-4">
                         <div class="col-sm-6 col-xl-4 mb-4 mb-sm-0">
                             <label for="">Поиск по названию</label>
@@ -39,9 +39,9 @@
                     </div>
                     <button type="submit" name="search_document" class="btn btn-blue px-4">Найти</button>
                     <a href="{% url 'documents' %}#page-top" class="btn btn-link btn-sm text-secondary" role="button">Сбросить</a>
-                </form>
+                </form> {% endcomment %}
 
-                <nav class="mb-4" aria-label="Page navigation example">
+                {% comment %} <nav class="mb-4" aria-label="Page navigation example">
                     <ul class="pagination pagination-sm justify-content-center justify-content-sm-end">
                         <li class="page-item disabled px-1">
                             <a class="page-link page-link-prev" href="#" tabindex="-1"><i class="icon-left-open-mini"></i></a>
@@ -53,7 +53,7 @@
                             <a class="page-link page-link-next " href="#"><i class="icon-right-open-mini"></i></a>
                         </li>
                     </ul>
-                </nav>
+                </nav> {% endcomment %}
 
                 {% if search_result %}
                 <div class="alert alert-success">
@@ -200,7 +200,7 @@
                     </div>
                 </div> {% endcomment %}
 
-                <nav class="mb-4" aria-label="Page navigation example">
+                {% comment %} <nav class="mb-4" aria-label="Page navigation example">
                     <ul class="pagination pagination-sm justify-content-center justify-content-sm-end">
                         <li class="page-item disabled px-1">
                             <a class="page-link page-link-prev" href="#" tabindex="-1"><i class="icon-left-open-mini"></i></a>
@@ -212,7 +212,7 @@
                             <a class="page-link page-link-next " href="#"><i class="icon-right-open-mini"></i></a>
                         </li>
                     </ul>
-                </nav>
+                </nav> {% endcomment %}
 
                 <div class="d-none d-lg-block">
                     <div class="row align-items-center mb-5">

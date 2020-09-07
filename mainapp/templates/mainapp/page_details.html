@@ -68,7 +68,7 @@
             <div class="box-gray p-4 mb-4">
                 {{ side_panel.text|safe }}
             </div>
-            <div class="box-gray p-4 mb-4">
+            {% comment %} <div class="box-gray p-4 mb-4">
                 <h5 class="mb-4">Документы для приема на аттестацию</h5>
                 <p class="text-secondary text-size-14 mb-3">Типовые формы заявки на аттестацию</p>
                 <div class="row mb-2 mb-sm-3">
@@ -76,7 +76,7 @@
                     {% include 'mainapp/includes/documents_side_panel.html' %}
 
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>
     <div class="d-block d-lg-none">
