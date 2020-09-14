@@ -135,7 +135,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% autoescape off %}
                                 {% for service in all_services %}
-                                <a class="dropdown-item" href="{% url 'service' service.pk %}#page-top">{{ service.title }}</a>
+                                <a class="dropdown-item" href="{% url 'service' service.pk %}#page-top">{{ service.title|cut:"<br>" }}</a>
                                 {% endfor %}
                                 {% endautoescape %}
                             </div>
