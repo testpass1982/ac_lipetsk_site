@@ -172,6 +172,7 @@ class Document(models.Model):
                              null=True)
     publish_on_main_page = models.BooleanField(
         verbose_name="Опубиковать на главной", default=False)
+    sorting = models.SmallIntegerField(u'Порядок сортировки', blank=True, null=True)
 
     class Meta:
         verbose_name = "Документ"

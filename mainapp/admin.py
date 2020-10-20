@@ -81,7 +81,7 @@ get_tag_list.short_description = 'Список тэгов'
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ['title', 'url_code', get_tag_list, 'publish_on_main_page']
+    list_display = ['title', 'url_code', get_tag_list, 'publish_on_main_page', 'sorting']
 
 
 @admin.register(Article)

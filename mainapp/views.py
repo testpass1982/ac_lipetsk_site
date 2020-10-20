@@ -283,7 +283,7 @@ def documents(request):
                     title__contains=request.GET.get('document_name')).order_by('-created_date')
                 print('SEARCH_RESULT', search_result)
                 search_result_content['search_result'] = search_result
-    all_documents = Document.objects.all().order_by('created_date')
+    all_documents = Document.objects.all().order_by('sorting')
     # accreditation_list = Document.objects.filter(
     #     tags__in=Tag.objects.filter(name='Аккредитация САСв'))
     # cok_accreditation_list = Document.objects.filter(
