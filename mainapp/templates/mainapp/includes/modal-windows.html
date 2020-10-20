@@ -46,7 +46,7 @@
                                 <label for="" class="col-form-label col-form-label-sm">Вид заявки</label>
                                 <select name="order_type" class="form-control form-control-sm">
                                     {% for service in all_services %}
-                                        <option>{{ service.title }}</option>
+                                        <option>{{ service.title|safe }}</option>
                                     {% endfor %}
                                 </select>
                             </div>

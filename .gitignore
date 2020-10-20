@@ -88,6 +88,11 @@ local_settings.py
 
 .env
 db.sqlite3
+*.sqlite3
+media/
+styles.css
+styles.css.map
+import_file_example.txt
 
 # Images and Icons #
 ####################
